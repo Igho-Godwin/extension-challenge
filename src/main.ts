@@ -67,33 +67,33 @@ const processForSkyScanner = async () => {
   });
 
   const el = document.querySelector('#identity');
-  const SustainabilityDivElm = document.createElement('div');
-  const SustainabilityBtnElm = document.createElement('span');
+  const sustainabilityDivElm = document.createElement('div');
+  const sustainabilitySpanElm = document.createElement('span');
   const destination = localStorage.getItem('skyscanner-destination');
   const origin = localStorage.getItem('skyscanner-origin');
   el?.appendChild(addTooltipStyle());
   let sustainabilityScore;
   if (destination && origin) {
     sustainabilityScore = await fetchSustainabilityInformation(destination, origin);
-    SustainabilityBtnElm.textContent = `Sustainability Score is: ${sustainabilityScore}`;
-    SustainabilityBtnElm.style.backgroundColor =
-      sustainabilityScore === 'Sorry score unavailable' || undefined ? 'red' : '#0362e3';
-    SustainabilityBtnElm.style.color = 'white';
-    SustainabilityBtnElm.style.border = 'none';
-    SustainabilityBtnElm.style.borderRadius = '5px';
-    SustainabilityBtnElm.style.padding = '10px';
-    SustainabilityBtnElm.style.fontSize = '14px';
-    SustainabilityBtnElm.style.marginTop = '20px';
-    SustainabilityBtnElm.style.marginBottom = '20px';
-    SustainabilityBtnElm.style.display = 'inline-block';
-    SustainabilityBtnElm.classList.add('tooltip');
-    const toolTipElm = document.createElement('div');
-    toolTipElm.textContent = 'Welcome to tooltip';
-    toolTipElm.classList.add('tooltiptext');
-    SustainabilityBtnElm.appendChild(toolTipElm);
-    SustainabilityDivElm.appendChild(SustainabilityBtnElm);
-    el?.appendChild(SustainabilityDivElm);
   }
+  sustainabilitySpanElm.textContent = `Sustainability Score is: ${sustainabilityScore}`;
+  sustainabilitySpanElm.style.backgroundColor =
+    sustainabilityScore === 'Sorry score unavailable' || undefined ? 'red' : '#0362e3';
+  sustainabilitySpanElm.style.color = 'white';
+  sustainabilitySpanElm.style.border = 'none';
+  sustainabilitySpanElm.style.borderRadius = '5px';
+  sustainabilitySpanElm.style.padding = '10px';
+  sustainabilitySpanElm.style.fontSize = '14px';
+  sustainabilitySpanElm.style.marginTop = '20px';
+  sustainabilitySpanElm.style.marginBottom = '20px';
+  sustainabilitySpanElm.style.display = 'inline-block';
+  sustainabilitySpanElm.classList.add('tooltip');
+  const toolTipElm = document.createElement('div');
+  toolTipElm.textContent = 'Welcome to tooltip';
+  toolTipElm.classList.add('tooltiptext');
+  sustainabilitySpanElm.appendChild(toolTipElm);
+  sustainabilityDivElm.appendChild(sustainabilitySpanElm);
+  el?.appendChild(sustainabilityDivElm);
 };
 
 const processForKayak = async () => {
@@ -123,6 +123,7 @@ const processForKayak = async () => {
 
   const origins = localStorage.getItem('kayak-origins')?.split(';;');
   const destinations = localStorage.getItem('kayak-destinations')?.split(';;');
+
   if (!origins) {
     return;
   }
@@ -135,29 +136,29 @@ const processForKayak = async () => {
     if (destinations[i] === '') {
       continue;
     }
-    const SustainabilityDivElm = document.createElement('div');
-    const SustainabilityBtnElm = document.createElement('span');
+    const sustainabilityDivElm = document.createElement('div');
+    const sustainabilitySpanElm = document.createElement('span');
     if (destinations[i] && origins[i]) {
       sustainabilityScore = await fetchSustainabilityInformation(destinations[i], origins[i]);
     }
-    SustainabilityBtnElm.textContent = `Sustainability Score For ( destination: ${destinations[i]}  ) is: ${sustainabilityScore}`;
-    SustainabilityBtnElm.style.backgroundColor =
+    sustainabilitySpanElm.textContent = `Sustainability Score For ( destination: ${destinations[i]}  ) is: ${sustainabilityScore}`;
+    sustainabilitySpanElm.style.backgroundColor =
       sustainabilityScore === 'Sorry score unavailable' || undefined ? 'red' : '#0362e3';
-    SustainabilityBtnElm.style.color = 'white';
-    SustainabilityBtnElm.style.border = 'none';
-    SustainabilityBtnElm.style.borderRadius = '5px';
-    SustainabilityBtnElm.style.padding = '10px';
-    SustainabilityBtnElm.style.fontSize = '14px';
-    SustainabilityBtnElm.style.marginTop = '20px';
-    SustainabilityBtnElm.style.marginBottom = '20px';
-    SustainabilityBtnElm.style.display = 'inline-block';
-    SustainabilityBtnElm.classList.add(`tooltip`);
+    sustainabilitySpanElm.style.color = 'white';
+    sustainabilitySpanElm.style.border = 'none';
+    sustainabilitySpanElm.style.borderRadius = '5px';
+    sustainabilitySpanElm.style.padding = '10px';
+    sustainabilitySpanElm.style.fontSize = '14px';
+    sustainabilitySpanElm.style.marginTop = '20px';
+    sustainabilitySpanElm.style.marginBottom = '20px';
+    sustainabilitySpanElm.style.display = 'inline-block';
+    sustainabilitySpanElm.classList.add(`tooltip`);
     const toolTipElm = document.createElement('div');
     toolTipElm.textContent = 'Welcome to tooltip';
     toolTipElm.classList.add(`tooltiptext`);
-    SustainabilityBtnElm.appendChild(toolTipElm);
-    SustainabilityDivElm.appendChild(SustainabilityBtnElm);
-    el?.appendChild(SustainabilityDivElm);
+    sustainabilitySpanElm.appendChild(toolTipElm);
+    sustainabilityDivElm.appendChild(sustainabilitySpanElm);
+    el?.appendChild(sustainabilityDivElm);
   }
 };
 
